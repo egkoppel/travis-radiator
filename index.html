@@ -2,8 +2,13 @@
 <body>
 <script>
 setInterval(function() {
-  // method to be executed;
-  console.log("hi");
+  // Make request to Travis
+  var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "Your Rest URL Here", false);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+    var response = JSON.parse(xhttp.responseText);
+    console.log(response[0]);
 }, 5000);
 </script>
 </body>
