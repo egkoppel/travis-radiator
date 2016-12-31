@@ -4,7 +4,7 @@
 setInterval(function() {
   // Make request to Travis
   var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "Your Rest URL Here", false);
+    xhttp.open("POST", "https://api.travis-ci.org/repos/egkoppel/radiator/builds", false);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
     var response = JSON.parse(xhttp.responseText);
