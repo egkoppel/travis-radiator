@@ -5,13 +5,9 @@
 <body>
 <script>
 setInterval(function() {
-  // Make request to Travis
-  var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "https://api.travis-ci.org/repos/egkoppel/radiator/builds", false);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send();
-    var response = JSON.parse(xhttp.responseText);
-    console.log(response[0]);
+  $.get( "https://api.travis-ci.org/repos/egkoppel/radiator/builds", function( data ) {
+  console.log(data);
+});
 }, 5000);
 </script>
 </body>
