@@ -26,7 +26,8 @@
   */
   
 
-$.getJSON( "test.json", function( data ) {
+$.getJSON( "https://egkoppel.github.io/travis-radiator/test.json", function( data ) {
+  alert(data);
   var items = [];
   $.each( data, function( key, val ) {
     items.push( "<li id='" + key + "'>" + val + "</li>" );
