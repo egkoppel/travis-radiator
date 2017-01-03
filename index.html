@@ -41,10 +41,7 @@
     iconText = document.getElementById('icon');
     console.log(url);
     console.log(name);
-}
-});
-  
-  $.get( "https://api.travis-ci.org/repos/" + url + ".json", function( data ) {
+    $.get( "https://api.travis-ci.org/repos/" + url + ".json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
   } else {
@@ -69,6 +66,10 @@ setInterval(function() {
 });
   update();
 }, 10000);
+}
+});
+  
+  
   
   console.log('test');
 
