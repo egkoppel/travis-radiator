@@ -56,7 +56,7 @@
   var urls = [];
   
   $.get( "view.json", function( data ) {
-    clear();
+    document.body.innerHTML = "";
     console.log(data);
     var i = 0;
 for (let [key, value] of entries(data)) {
@@ -88,7 +88,7 @@ for (let [key, value] of entries(data)) {
   }
   
 setInterval(function() {
-  clear();
+  document.body.innerHTML = "";
   for (let [key, value] of entries(data)) {
   names[i] = key;
     urls[i] = value;
@@ -133,7 +133,7 @@ setInterval(function() {
       color = "#9b9b9b";
       icon = "refresh";
     }
-    document.body.innerHTML = document.body.innerHTML + `<div id="container" style="height:85px;background-color:` + color + `;">
+    document.body.innerHTML = document.body.innerHTML + `<div id="container" style="height:85px;">
   <h1 id="name" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
     ` + name + ` <i id="icon" class="material-icons">` + icon + `</i>
 </h1>
@@ -143,10 +143,6 @@ setInterval(function() {
 </h3>
   </div>`;
     
-  }
-  
-  function clear() {
-    document.body.innerHTML = "";
   }
 </script>
 </body>
