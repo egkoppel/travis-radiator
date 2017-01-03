@@ -17,6 +17,29 @@
   </div>
 <script>
  
+  function range(start, stop, step) {
+    if (typeof stop == 'undefined') {
+        // one param defined
+        stop = start;
+        start = 0;
+    }
+
+    if (typeof step == 'undefined') {
+        step = 1;
+    }
+
+    if ((step > 0 && start >= stop) || (step < 0 && start <= stop)) {
+        return [];
+    }
+
+    var result = [];
+    for (var i = start; step > 0 ? i < stop : i > stop; i += step) {
+        result.push(i);
+    }
+
+    return result;
+};
+  
   function* entries(obj) {
   for (let key of Object.keys(obj)) {
     yield [key, obj[key]];
@@ -29,19 +52,24 @@
   var iconText = document.getElementById('icon');
   var messageText = document.getElementById('message');
   var container = document.getElementById('container');
-  var name = "";
-  var url = "";
+  var names[] = "";
+  var urls[] = "";
   
   $.get( "view.json", function( data ) {
     console.log(data);
-  for (let [key, value] of entries(data)) {
-  name = key;
-    url = value;
-    nameText.innerHTML = name + "  <i id=\"icon\" class=\"material-icons\">refresh</i>";
+for (i = 0; i < data.length; i++) { 
+  names[i] = key;
+    urls[i] = value;
+    nameText.innerHTML = key + "  <i id=\"icon\" class=\"material-icons\">refresh</i>";
     iconText = document.getElementById('icon');
-    console.log(url);
-    console.log(name);
-    $.get( "https://api.travis-ci.org/repos/" + url + ".json", function( data ) {
+    console.log(value);
+    console.log(key);
+}
+});
+  
+  //TODO: work on this bit
+  
+    /*$.get( "https://api.travis-ci.org/repos/" + url + ".json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
   } else {
@@ -65,13 +93,7 @@ setInterval(function() {
   message = data[0]['message'];
 });
   update();
-}, 10000);
-}
-});
-  
-  
-  
-  console.log('test');
+}, 10000);*/
 
   function update() {
     if (status == 0) {
