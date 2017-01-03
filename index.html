@@ -52,8 +52,8 @@
   var iconText = document.getElementById('icon');
   var messageText = document.getElementById('message');
   var container = document.getElementById('container');
-  var names[] = "";
-  var urls[] = "";
+  var names[] = [];
+  var urls[] = [];
   
   $.get( "view.json", function( data ) {
     console.log(data);
