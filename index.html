@@ -17,6 +17,13 @@
 </h3>
   </div>
 <script>
+ 
+  function* entries(obj) {
+  for (let key of Object.keys(obj)) {
+    yield [key, obj[key]];
+  }  
+}
+  
   var message = "";
   var status = 3;
   var nameText = document.getElementById('name');
@@ -28,9 +35,9 @@
   
   $.get( "view.json", function( data ) {
     console.log(data);
-  for(var item in data) {
-  name = name;
-    url = data[name];
+  for (let [key, value] of entries(myObj)) {
+  name = key;
+    url = value;
     nameText.innerHTML = name;
     console.log(url);
     console.log(name);
