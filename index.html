@@ -6,6 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
+  <div id="container">
   <h1 id="name" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
     <i id="icon" class="material-icons">refresh</i>
     Sound Recorder
@@ -14,12 +15,14 @@
 <h3 id="message" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 20%; height:100%; float:right; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
    Loading...
 </h3>
+  </div>
 <script>
   var message = "";
   var status = 3;
   var nameText = document.getElementById('name');
   var iconText = document.getElementById('icon');
   var messageText = document.getElementById('message');
+  var container = document.getElementById('container');
   
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder.json", function( data ) {
   if(data["last_build_status"] != null) {
@@ -49,16 +52,16 @@ setInterval(function() {
 
   function update() {
     if (status == 0) {
-      document.body.style.backgroundColor = "#3ed850";
+      container.style.backgroundColor = "#3ed850";
       iconText.innerHTML = "done";
     } else if (status == 1) {
-      document.body.style.backgroundColor = "#ff4242";
+      container.style.backgroundColor = "#ff4242";
       iconText.innerHTML = "bug_report";
     } else if (status == 2) {
-      document.body.style.backgroundColor = "#42b9ff";
+      container.style.backgroundColor = "#42b9ff";
       iconText.innerHTML = "build";
     } else {
-      document.body.style.backgroundColor = "#9b9b9b";
+      container.style.backgroundColor = "#9b9b9b";
       iconText.innerHTML = "refresh";
     }
     messageText.innerHTML = message;
