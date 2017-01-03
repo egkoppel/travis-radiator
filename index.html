@@ -9,7 +9,7 @@
   <div id="container" style="height:85px;">
   <h1 id="name" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
     <i id="icon" class="material-icons">refresh</i>
-    Sound Recorder
+   Loading...
 </h1>
 
 <h3 id="message" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 20%; height:100%; float:right; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
@@ -23,28 +23,40 @@
   var iconText = document.getElementById('icon');
   var messageText = document.getElementById('message');
   var container = document.getElementById('container');
+  var name = "";
+  var url = "";
   
-  $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder.json", function( data ) {
+  $.get( "view.json", function( data ) {
+  for(var item in data) {
+  name = name;
+    url = data[name];
+    nameText.innerHTML = name;
+    console.log(url);
+    console.log(name);
+}
+});
+  
+  $.get( "https://api.travis-ci.org/repos/" + url + ".json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
   } else {
     status = 2;
   }
 });
-  $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
+  $.get( "https://api.travis-ci.org/repos/" + url + "/builds", function( data ) {
   message = data[0]['message'];
 });
   update();
   
 setInterval(function() {
-  $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder.json", function( data ) {
+  $.get( "https://api.travis-ci.org/repos/" + url + ".json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
   } else {
     status = 2;
   }
 });
-  $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
+  $.get( "https://api.travis-ci.org/repos/" + url + "/builds", function( data ) {
   message = data[0]['message'];
 });
   update();
