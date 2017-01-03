@@ -6,12 +6,16 @@
 <script>
   $.get( "https://api.travis-ci.org/repos/egkoppel/radiator/builds", function( data ) {
   console.log(data[0]);
-    $.get( "https://api.travis-ci.org/repos/egkoppel/radiator.json", function( data ) {
+});
+  $.get( "https://api.travis-ci.org/repos/egkoppel/radiator.json", function( data ) {
   console.log(data["last_build_status"]);
+});
+  
 setInterval(function() {
   $.get( "https://api.travis-ci.org/repos/egkoppel/radiator/builds", function( data ) {
   console.log(data[0]);
-    $.get( "https://api.travis-ci.org/repos/egkoppel/radiator.json", function( data ) {
+});
+  $.get( "https://api.travis-ci.org/repos/egkoppel/radiator.json", function( data ) {
   console.log(data["last_build_status"]);
 });
 }, 10000);
