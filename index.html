@@ -72,48 +72,60 @@ for (let [key, value] of entries(data)) {
 });
   
   //TODO: work on this bit
-  
-    /*$.get( "https://api.travis-ci.org/repos/" + url + ".json", function( data ) {
+  for (i = 0; i < names.length; i++) {
+    $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
   } else {
     status = 2;
   }
 });
-  $.get( "https://api.travis-ci.org/repos/" + url + "/builds", function( data ) {
+  $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
 });
-  update();
+  update(names[i]);
+  }
   
 setInterval(function() {
-  $.get( "https://api.travis-ci.org/repos/" + url + ".json", function( data ) {
+  $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
   } else {
     status = 2;
   }
 });
-  $.get( "https://api.travis-ci.org/repos/" + url + "/builds", function( data ) {
+  $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
 });
-  update();
-}, 10000);*/
+  update(names[i]);
+}, 10000);
 
-  function update() {
+  function update(name) {
+    var color = "";
+    var icon = "";
     if (status == 0) {
-      container.style.backgroundColor = "#3ed850";
-      iconText.innerHTML = "done";
+      color = "#3ed850";
+      icon = "done";
     } else if (status == 1) {
-      container.style.backgroundColor = "#ff4242";
-      iconText.innerHTML = "bug_report";
+      color = "#ff4242";
+      icon = "bug_report";
     } else if (status == 2) {
-      container.style.backgroundColor = "#42b9ff";
-      iconText.innerHTML = "build";
+      color = "#42b9ff";
+      icon = "build";
     } else {
-      container.style.backgroundColor = "#9b9b9b";
-      iconText.innerHTML = "refresh";
+      color = "#9b9b9b";
+      icon = "refresh";
     }
-    messageText.innerHTML = message;
+    document.body.innerHTML = document.body.innerHTML + `<div id="container" style="height:85px;background-color:` + color + `;">
+  <h1 id="name" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
+    ` + name + ` <i id="icon" class="material-icons">` + icon + `</i>
+</h1>
+
+<h3 id="message" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 20%; height:100%; float:right; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
+   ` + message + `
+</h3>
+  </div>`;
+    
   }
 </script>
 </body>
