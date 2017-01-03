@@ -27,6 +27,7 @@
   var url = "";
   
   $.get( "view.json", function( data ) {
+    console.log(data);
   for(var item in data) {
   name = name;
     url = data[name];
