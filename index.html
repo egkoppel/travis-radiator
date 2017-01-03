@@ -6,28 +6,28 @@
 <script>
   var message = "";
   var status = 3;
-  $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
-  message = data[0];
-});
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder.json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
   } else {
     status = 2;
   }
+});
+  $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
+  message = data[0];
 });
   update();
   
 setInterval(function() {
-  $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
-  message = data[0];
-});
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder.json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
   } else {
     status = 2;
   }
+});
+  $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
+  message = data[0];
 });
   update();
 }, 10000);
