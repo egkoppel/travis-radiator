@@ -57,13 +57,15 @@
   
   $.get( "view.json", function( data ) {
     console.log(data);
-for (i = 0; i < data.length; i++) { 
+    var i = 0;
+for (let [key, value] of entries(data)) {
   names[i] = key;
     urls[i] = value;
     nameText.innerHTML = key + "  <i id=\"icon\" class=\"material-icons\">refresh</i>";
     iconText = document.getElementById('icon');
     console.log(value);
     console.log(key);
+  i++;
 }
 });
   
