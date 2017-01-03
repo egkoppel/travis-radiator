@@ -49,16 +49,16 @@ setInterval(function() {
   function update() {
     if (status == 0) {
       document.body.style.backgroundColor = "#3ed850";
-      //iconText.innerHtml = "done";
+      iconText.innerHTML = "done";
     } else if (status == 1) {
       document.body.style.backgroundColor = "#ff4242";
-      //iconText.innerHtml = "bug_report";
+      iconText.innerHTML = "bug_report";
     } else if (status == 2) {
       document.body.style.backgroundColor = "#42b9ff";
-      //iconText.innerHtml = "build";
+      iconText.innerHTML = "build";
     } else {
       document.body.style.backgroundColor = "#9b9b9b";
-      //iconText.innerHtml = "refresh";
+      iconText.innerHTML = "refresh";
     }
     messageText.innerHTML = message;
   }
