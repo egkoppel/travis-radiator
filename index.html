@@ -100,7 +100,6 @@ setInterval(function() {
 }
     console.log(names);
     console.log(urls);
-});
   
   for (i = 0; i < names.length; i++) {
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
