@@ -28,7 +28,7 @@
   }
 });
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
-  message = data[0];
+  message = data[0]['message'];
 });
   update();
   
@@ -41,7 +41,7 @@ setInterval(function() {
   }
 });
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
-  message = data[0];
+  message = data[0]['message'];
 });
   update();
 }, 10000);
