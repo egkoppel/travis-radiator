@@ -4,33 +4,43 @@
 </head>
 <body>
 <script>
+  var message = "";
+  var status = 0;
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
-  console.log(data[0]);
+  message = data[0];
 });
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder.json", function( data ) {
-  console.log(data["last_build_status"]);
+  if(data["last_build_status"] != null) {
+    status = data["last_build_status"];
+  } else {
+    status = 2;
+  }
 });
+  update();
   
 setInterval(function() {
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
-  console.log(data[0]);
+  message = data[0];
 });
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder.json", function( data ) {
-  console.log(data["last_build_status"]);
+  if(data["last_build_status"] != null) {
+    status = data["last_build_status"];
+  } else {
+    status = 2;
+  }
 });
+  update();
 }, 10000);
-  /*$(document).ready(function() {
-        $.ajax({
-          url: 'https://api.travis-ci.com/builds/187938429',
-          type: 'GET',
-          dataType: 'json',
-          success: function(data) { console.log(data); },
-          error: function() { alert(':('); }
-        });
-      });*/
-      
 
-
+  function update() {
+    if (status == 0) {
+      document.body.style.backgroundColor = "#3ed850";
+    } else if (status == 1) {
+      document.body.style.backgroundColor = "#ff4242";
+    } else {
+      document.body.style.backgroundColor = "#42b9ff";
+    }
+  }
 </script>
 </body>
 </html>
