@@ -5,7 +5,7 @@
 <body>
 <script>
   var message = "";
-  var status = 0;
+  var status = 3;
   $.get( "https://api.travis-ci.org/repos/EZ-Code-Developer/sound-recorder/builds", function( data ) {
   message = data[0];
 });
@@ -37,8 +37,10 @@ setInterval(function() {
       document.body.style.backgroundColor = "#3ed850";
     } else if (status == 1) {
       document.body.style.backgroundColor = "#ff4242";
-    } else {
+    } else if (status == 2) {
       document.body.style.backgroundColor = "#42b9ff";
+    } else {
+      document.body.style.backgroundColor = "#9b9b9b";
     }
   }
 </script>
