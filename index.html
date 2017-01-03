@@ -4,6 +4,8 @@
 </head>
 <body>
 <script>
+  $.get( "https://api.travis-ci.org/repos/egkoppel/radiator/builds", function( data ) {
+  console.log(data[0]);
 setInterval(function() {
   $.get( "https://api.travis-ci.org/repos/egkoppel/radiator/builds", function( data ) {
   console.log(data[0]);
