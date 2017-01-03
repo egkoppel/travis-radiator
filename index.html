@@ -57,6 +57,8 @@
   
   $.get( "view.json", function( data ) {
     document.body.innerHTML = "";
+    names = [];
+  urls = [];
     console.log(data);
     var i = 0;
 for (let [key, value] of entries(data)) {
@@ -89,6 +91,8 @@ for (let [key, value] of entries(data)) {
   
 setInterval(function() {
   document.body.innerHTML = "";
+    names = [];
+  urls = [];
   for (let [key, value] of entries(data)) {
   names[i] = key;
     urls[i] = value;
