@@ -127,7 +127,7 @@ setInterval(function() {
     });
 
   function update(name, status) {
-    /*var color = "";
+    var color = "";
     var icon = "";
     if (status == 0) {
       color = "#3ed850";
@@ -141,14 +141,14 @@ setInterval(function() {
     } else {
       color = "#9b9b9b";
       icon = "refresh";
-    }*/
+    }
     document.body.innerHTML = document.body.innerHTML + `<div id="container" style="height:85px;">
   <h1 id="name" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
     ` + name + `
 </h1>
 
 <h3 id="message" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 20%; height:100%; float:right; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-   ` + status + `
+   <i class="material-icons">` + icon + `</i>
 </h3>
   </div>`;
     
