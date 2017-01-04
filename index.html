@@ -5,7 +5,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body style="background-color:#002560;">
-    <div id="container" style="height:85px;">
+	  <div id="container">
+    <div style="height:85px;">
       <h1 id="name" class="product-sans" style="padding-left:0.5cm;width: 60%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
         Loading...
 	<i id="icon" class="material-icons">refresh</i>
@@ -15,6 +16,7 @@
        Loading...
      </h3>
    </div>
+	  </div>
    <script>
 	   
 // Get a variable from GET
@@ -81,7 +83,7 @@ function update(name, status, message) {
     icon = "priority_high"; // Exclamation mark
   }
   // Add to HTML body
-  document.body.innerHTML = document.body.innerHTML + `<div style="height:85px;background-color:` + color + `;overflow: auto;">
+  document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + `<div style="height:85px;background-color:` + color + `;overflow: auto;">
                                                          <h1 class="product-sans" style="padding-left:0.5cm;position: relative;top: 50%;transform: translateY(-50%); width: 60%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
                                                            ` + name + `  <i class="material-icons">` + icon + `</i>
                                                          </h1>
@@ -98,7 +100,7 @@ var urls = [];
 var name = getQueryVariable("name"); // Get the name of the view
 $.get( "views/" + name + ".json", function( data ) { // Get the view	
   // Clear the screen
-  document.body.innerHTML = ""; 
+  document.getElementById('container').innerHTML = ""; 
   var i = 0;
   for (let [key, value] of entries(data)) {
     // Store the view names and URLs
@@ -111,7 +113,7 @@ $.get( "views/" + name + ".json", function( data ) { // Get the view
   // Refresh every 10 seconds
   setInterval(function() {
     // Clear the screen
-    document.body.innerHTML = "";
+    document.getElementById('container').innerHTML = "";
     // Get the data
     for (i = 0; i < names.length; i++) {
       getData(i);
