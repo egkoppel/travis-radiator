@@ -54,7 +54,7 @@ function getData(i) {
       update(names[i], status, message);
     });
   }).fail(function() { // If the repository doesn't exist
-    update(names[i], 3, "");
+    update(names[i], 3, "Repository does not exist, or is not set up with Travis 😞");
   });
 }
 	   
