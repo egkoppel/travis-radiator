@@ -67,6 +67,8 @@ for (let [key, value] of entries(data)) {
   document.body.innerHTML = "";
     
   for (i = 0; i < names.length; i++) {
+      console.log(i);
+      console.log(urls[i]);
     var status = 3;
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
@@ -74,8 +76,6 @@ for (let [key, value] of entries(data)) {
   } else {
     status = 2;
   }
-      console.log(i);
-      console.log(urls[i]);
       console.log(status);
   update(urls[i], status);
 });
@@ -88,6 +88,8 @@ setInterval(function() {
   document.body.innerHTML = "";
     
   for (i = 0; i < names.length; i++) {
+      console.log(i);
+      console.log(urls[i]);
     var status = 3;
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
@@ -95,8 +97,6 @@ setInterval(function() {
   } else {
     status = 2;
   }
-      console.log(i);
-      console.log(urls[i]);
       console.log(status);
   update(urls[i], status);
 });
