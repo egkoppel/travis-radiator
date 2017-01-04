@@ -96,9 +96,11 @@ for (let [key, value] of entries(data)) {
   } else {
     status = 2;
   }
+      $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
+  var message = data[0]['message'];
       console.log(status);
       
-  update(names[i], status);
+  update(names[i], status, message);
 });
     }
     
@@ -126,7 +128,7 @@ setInterval(function() {
 }, 10000);
     });
 
-  function update(name, status) {
+  function update(name, status, message) {
     var color = "";
     var icon = "";
     if (status == 0) {
@@ -144,11 +146,11 @@ setInterval(function() {
     }
     document.body.innerHTML = document.body.innerHTML + `<div id="container" style="height:85px;background-color:` + color + `;overflow: auto;">
   <h1 id="name" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-    ` + name + `
+    ` + name + `  <i class="material-icons">` + icon + `</i>
 </h1>
 
 <h3 id="message" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 20%; height:100%; float:right; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-   <i class="material-icons">` + icon + `</i>
+   ` + message + `
 </h3>
   </div>`;
     
