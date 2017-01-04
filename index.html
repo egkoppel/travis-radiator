@@ -69,44 +69,47 @@ for (let [key, value] of entries(data)) {
   for (i = 0; i < names.length; i++) {
       console.log(i);
       console.log(names[i]);
-    var status = [];
-    $.ajax({
-     async: false,
-     type: 'GET',
-     url: "https://api.travis-ci.org/repos/" + urls[i] + ".json",
-     success: function(data) {
-          if(data["last_build_status"] != null) {
-    status[i] = data["last_build_status"];
-  } else {
-    status[i] = 2;
-  }
-      console.log(status);
-      
-  update(names[i], status[i]);
-     }
-});
-    /*$.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
+    getData(i);
+    /*var status = 3;
+    
+    $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
-    status[i] = data["last_build_status"];
+    status = data["last_build_status"];
   } else {
-    status[i] = 2;
+    status = 2;
   }
       console.log(status);
       
   update(names[i], status[i]);
 });*/
-  /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
+  /*$.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
 });*/
   }
   
+    function getData(i) {
+      var status = 3;
+    
+    $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
+  if(data["last_build_status"] != null) {
+    status = data["last_build_status"];
+  } else {
+    status = 2;
+  }
+      console.log(status);
+      
+  update(names[i], status[i]);
+});
+    }
+    
 setInterval(function() {
   document.body.innerHTML = "";
     
   for (i = 0; i < names.length; i++) {
       console.log(i);
       console.log(names[i]);
-  update(names[i], status);
+    getData(i);
+  /*update(names[i], status);
     var status = 3;
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
@@ -115,7 +118,7 @@ setInterval(function() {
     status = 2;
   }
       console.log(status);
-});
+});*/
   /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
 });*/
