@@ -1,174 +1,120 @@
 <html>
   <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://egkoppel.github.io/product-sans/google-fonts.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
-<body>
-  <div id="container" style="height:85px;">
-  <h1 id="name" class="product-sans" style="width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-    Loading... <i id="icon" class="material-icons">refresh</i>
-</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="container" style="height:85px;">
+      <h1 id="name" class="product-sans" style="width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
+        Loading...
+	<i id="icon" class="material-icons">refresh</i>
+     </h1>
 
-<h3 id="message" class="product-sans" style="width: 20%; height:100%; float:right; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-   Loading...
-</h3>
-  </div>
-<script>
-  
-  function getQueryVariable(variable) {
+     <h3 id="message" class="product-sans" style="width: 20%; height:100%; float:right; font-family:product-sans;">
+       Loading...
+     </h3>
+   </div>
+   <script>
+	   
+// Get a variable from GET
+function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split("&");
   for (var i=0;i<vars.length;i++) {
     var pair = vars[i].split("=");
     if (pair[0] == variable) {
-	    var returnValue = pair[1].replace(/%20/g," ");
+      var returnValue = pair[1].replace(/%20/g," ");
       return returnValue;
     }
   } 
   alert('No name specified. Please go back');
 }
- 
-  function range(start, stop, step) {
-    if (typeof stop == 'undefined') {
-        // one param defined
-        stop = start;
-        start = 0;
-    }
-
-    if (typeof step == 'undefined') {
-        step = 1;
-    }
-
-    if ((step > 0 && start >= stop) || (step < 0 && start <= stop)) {
-        return [];
-    }
-
-    var result = [];
-    for (var i = start; step > 0 ? i < stop : i > stop; i += step) {
-        result.push(i);
-    }
-
-    return result;
-};
-  
-  function* entries(obj) {
+	   
+// foreach on dictionary
+function* entries(obj) {
   for (let key of Object.keys(obj)) {
     yield [key, obj[key]];
   }  
 }
-  var names = [];
-  var urls = [];
-  var name = getQueryVariable("name");
-  $.get( "views/" + name + ".json", function( data ) {
-    names.length = 0;
-  urls.length = 0;
-    console.log(data);
-    var i = 0;
-for (let [key, value] of entries(data)) {
-  names[i] = key;
-    urls[i] = value;
-    console.log(value);
-    console.log(key);
-  i++;
-}
-    console.log(names);
-    console.log(urls);
 
-  
-  document.body.innerHTML = "";
-    
-  for (i = 0; i < names.length; i++) {
-      console.log(i);
-      console.log(names[i]);
-    getData(i);
-    /*var status = 3;
-    
-    $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
-  if(data["last_build_status"] != null) {
-    status = data["last_build_status"];
-  } else {
-    status = 2;
-  }
-      console.log(status);
-      
-  update(names[i], status[i]);
-});*/
-  /*$.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
-  message = data[0]['message'];
-});*/
-  }
-  
-    function getData(i) {
-      var status = 3;
-    
-    $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
-  if(data["last_build_status"] != null) {
-    status = data["last_build_status"];
-  } else {
-    status = 2;
-  }
-      $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
-  var message = data[0]['message'];
-      console.log(status);
-      
-  update(names[i], status, message);
-});
-      });
+// Get the data from Travis (build status and commit message)
+function getData(i) {
+  var status = 3;
+  // Get build status
+  $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
+    if (data.hasOwnProperty('last_build_status') {
+      if (data["last_build_status"] != null) {
+        status = data["last_build_status"]; // 0 = OK | 1 = Problem | Null = Building
+      } else {
+        status = 2;
+      }
     }
-    
-setInterval(function() {
-  document.body.innerHTML = "";
-    
-  for (i = 0; i < names.length; i++) {
-      console.log(i);
-      console.log(names[i]);
-    getData(i);
-  /*update(names[i], status);
-    var status = 3;
-    $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
-  if(data["last_build_status"] != null) {
-    status = data["last_build_status"];
-  } else {
-    status = 2;
-  }
-      console.log(status);
-});*/
-  /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
-  message = data[0]['message'];
-});*/
-  }
-}, 10000);
+    // Get last commit message
+    $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
+      var message = data[0]['message'];
+      update(names[i], status, message);
     });
-
-  function update(name, status, message) {
-    var color = "";
-    var icon = "";
-    if (status == 0) {
-      color = "#3ed850";
-      icon = "done";
-    } else if (status == 1) {
-      color = "#ff4242";
-      icon = "bug_report";
-    } else if (status == 2) {
-      color = "#42b9ff";
-      icon = "build";
-    } else {
-      color = "#9b9b9b";
-      icon = "refresh";
-    }
-    document.body.innerHTML = document.body.innerHTML + `<div id="container" style="height:85px;background-color:` + color + `;overflow: auto;">
-  <h1 id="name" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-    ` + name + `  <i class="material-icons">` + icon + `</i>
-</h1>
-
-<h3 id="message" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 20%; height:100%; float:right; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-   ` + message + `
-</h3>
-  </div>`;
-    
+  });
+}
+	   
+// Add the row to the screen
+function update(name, status, message) {
+  var color = "";
+  var icon = "";
+  if (status == 0) {
+    // Build OK
+    color = "#3ed850"; // Green
+    icon = "done"; // Tick
+  } else if (status == 1) {
+    // Problem with build
+    color = "#ff4242"; // Red
+    icon = "bug_report"; // Bug
+  } else if (status == 2) {
+    // Build in progress
+    color = "#42b9ff"; // Blue
+    icon = "build"; // Spanner
+  } else {
+    // Not existing
+    color = "#9b9b9b"; // Grey
+    icon = "priority_high"; // Exclamation mark
   }
+  document.body.innerHTML = document.body.innerHTML + `<div style="height:85px;background-color:` + color + `;overflow: auto;">
+                                                         <h1 class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
+                                                           ` + name + `  <i class="material-icons">` + icon + `</i>
+                                                         </h1>
+
+                                                         <h3 class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 20%; height:100%; float:right; font-family:product-sans;">
+                                                           ` + message + `
+                                                         </h3>
+                                                       </div>`;
+}
+	   
+var names = [];
+var urls = [];
+var name = getQueryVariable("name");
+$.get( "views/" + name + ".json", function( data ) {
+  names.length = 0;
+  urls.length = 0;
+  console.log(data);
+  var i = 0;
+  for (let [key, value] of entries(data)) {
+    names[i] = key;
+    urls[i] = value;
+    i++;
+  }
+  document.body.innerHTML = ""; 
+  for (i = 0; i < names.length; i++) {
+    getData(i);
+  }
+  setInterval(function() {
+    document.body.innerHTML = "";
+    for (i = 0; i < names.length; i++) {
+      getData(i);
+    }
+  }, 10000);
+});
+	   
 </script>
 </body>
 </html>
