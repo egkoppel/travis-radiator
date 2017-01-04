@@ -70,7 +70,22 @@ for (let [key, value] of entries(data)) {
       console.log(i);
       console.log(names[i]);
     var status = [];
-    $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
+    $.ajax({
+     async: false,
+     type: 'GET',
+     url: "https://api.travis-ci.org/repos/" + urls[i] + ".json",
+     success: function(data) {
+          if(data["last_build_status"] != null) {
+    status[i] = data["last_build_status"];
+  } else {
+    status[i] = 2;
+  }
+      console.log(status);
+      
+  update(names[i], status[i]);
+     }
+});
+    /*$.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
     status[i] = data["last_build_status"];
   } else {
@@ -79,7 +94,7 @@ for (let [key, value] of entries(data)) {
       console.log(status);
       
   update(names[i], status[i]);
-});
+});*/
   /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
 });*/
