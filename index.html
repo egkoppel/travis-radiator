@@ -75,11 +75,11 @@ for (let [key, value] of entries(data)) {
     status = 2;
   }
       console.log(status);
+  update(names[i], status);
 });
   /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
 });*/
-  update(names[i], status);
   }
   
 setInterval(function() {
@@ -94,11 +94,11 @@ setInterval(function() {
     status = 2;
   }
       console.log(status)
+  update(names[i], status);
 });
   /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
 });*/
-  update(names[i], status);
   }
 }, 10000);
     });
