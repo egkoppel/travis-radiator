@@ -74,6 +74,7 @@ for (let [key, value] of entries(data)) {
   } else {
     status = 2;
   }
+      console.log(names[i]);
       console.log(status);
   update(names[i], status);
 });
@@ -93,7 +94,8 @@ setInterval(function() {
   } else {
     status = 2;
   }
-      console.log(status)
+      console.log(names[i]);
+      console.log(status);
   update(names[i], status);
 });
   /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
