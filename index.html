@@ -61,7 +61,7 @@
   var names = [];
   var urls = [];
   var name = getQueryVariable("name");
-  $.get( name + ".json", function( data ) {
+  $.get( "views/" + name + ".json", function( data ) {
     names.length = 0;
   urls.length = 0;
     console.log(data);
