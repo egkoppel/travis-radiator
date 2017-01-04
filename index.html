@@ -69,15 +69,16 @@ for (let [key, value] of entries(data)) {
   for (i = 0; i < names.length; i++) {
       console.log(i);
       console.log(names[i]);
-  update(names[i], status);
-    var status = 3;
+    var status = [];
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
-    status = data["last_build_status"];
+    status[i] = data["last_build_status"];
   } else {
-    status = 2;
+    status[i] = 2;
   }
       console.log(status);
+      
+  update(names[i], status[i]);
 });
   /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
