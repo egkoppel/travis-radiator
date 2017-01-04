@@ -43,18 +43,18 @@ function getData(i) {
   var status = 3;
   // Get build status
   $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
-    if (data.hasOwnProperty('last_build_status')) {
       if (data["last_build_status"] != null) {
         status = data["last_build_status"]; // 0 = OK | 1 = Problem | Null = Building
       } else {
         status = 2;
       }
-    }
     // Get last commit message
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
       var message = data[0]['message'];
       update(names[i], status, message);
     });
+  });.fail(function() {
+    alert('non existent'); // or whatever
   });
 }
 	   
