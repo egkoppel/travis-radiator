@@ -45,13 +45,6 @@
     yield [key, obj[key]];
   }  
 }
-  
-  var message = "";
-  var status = 3;
-  var nameText = document.getElementById('name');
-  var iconText = document.getElementById('icon');
-  var messageText = document.getElementById('message');
-  var container = document.getElementById('container');
   var names = [];
   var urls = [];
   
@@ -64,8 +57,6 @@
 for (let [key, value] of entries(data)) {
   names[i] = key;
     urls[i] = value;
-    nameText.innerHTML = key + "  <i id=\"icon\" class=\"material-icons\">refresh</i>";
-    iconText = document.getElementById('icon');
     console.log(value);
     console.log(key);
   i++;
@@ -74,8 +65,12 @@ for (let [key, value] of entries(data)) {
     console.log(urls);
 
   
-  //TODO: work on this bit
+  document.body.innerHTML = "";
+    names.length = 0;
+  urls.length = 0;
+    
   for (i = 0; i < names.length; i++) {
+    var status = 3;
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
@@ -83,30 +78,19 @@ for (let [key, value] of entries(data)) {
     status = 2;
   }
 });
-  $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
+  /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
-});
-  update(names[i]);
+});*/
+  update(names[i], status);
   }
   
 setInterval(function() {
   document.body.innerHTML = "";
     names.length = 0;
   urls.length = 0;
-  i = 0;
-  for (let [key, value] of entries(data)) {
-  names[i] = key;
-    urls[i] = value;
-    nameText.innerHTML = key + "  <i id=\"icon\" class=\"material-icons\">refresh</i>";
-    iconText = document.getElementById('icon');
-    console.log(value);
-    console.log(key);
-  i++;
-}
-    console.log(names);
-    console.log(urls);
-  
+    
   for (i = 0; i < names.length; i++) {
+    var status = 3;
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
   if(data["last_build_status"] != null) {
     status = data["last_build_status"];
@@ -114,16 +98,15 @@ setInterval(function() {
     status = 2;
   }
 });
-  $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
+  /*.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
   message = data[0]['message'];
-});
-  update(names[i]);
-  }
+});*/
+  update(names[i], status);
 }, 10000);
     });
 
-  function update(name) {
-    var color = "";
+  function update(name, status) {
+    /*var color = "";
     var icon = "";
     if (status == 0) {
       color = "#3ed850";
@@ -137,14 +120,14 @@ setInterval(function() {
     } else {
       color = "#9b9b9b";
       icon = "refresh";
-    }
+    }*/
     document.body.innerHTML = document.body.innerHTML + `<div id="container" style="height:85px;">
   <h1 id="name" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-    ` + name + ` <i id="icon" class="material-icons">` + icon + `</i>
+    ` + name + `
 </h1>
 
 <h3 id="message" class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 20%; height:100%; float:right; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-   ` + message + `
+   ` + status + `
 </h3>
   </div>`;
     
