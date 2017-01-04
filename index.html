@@ -51,7 +51,7 @@ function getData(i) {
     }
     // Get last commit message
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
-      var message = data[0]['message'];
+      var message = "  " + data[0]['message'];
       update(names[i], status, message); // Add to screen
     });
   }).fail(function() { // If the repository doesn't exist
@@ -82,7 +82,7 @@ function update(name, status, message) {
   }
   // Add to HTML body
   document.body.innerHTML = document.body.innerHTML + `<div style="height:85px;background-color:` + color + `;overflow: auto;">
-                                                         <h1 class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 65%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">  
+                                                         <h1 class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 65%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
                                                            ` + name + `  <i class="material-icons">` + icon + `</i>
                                                          </h1>
 
