@@ -80,11 +80,11 @@ function update(name, status, message) {
     icon = "priority_high"; // Exclamation mark
   }
   document.body.innerHTML = document.body.innerHTML + `<div style="height:85px;background-color:` + color + `;overflow: auto;">
-                                                         <h1 class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 80%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
+                                                         <h1 class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 65%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
                                                            ` + name + `  <i class="material-icons">` + icon + `</i>
                                                          </h1>
 
-                                                         <h3 class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 20%; height:100%; float:right; font-family:product-sans;">
+                                                         <h3 class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 35%; height:100%; float:right; font-family:product-sans;">
                                                            ` + message + `
                                                          </h3>
                                                        </div>`;
