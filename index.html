@@ -3,10 +3,20 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://egkoppel.github.io/product-sans/google-fonts.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </head>
   <body style="background-color:#002560;">
     <h1 id="title" class="product-sans" style="color:white;text-align:center;font-variant: small-caps;">Radiator</h1>
     <div id="container">
+      <div class="mdl-card" style="height:85px;">
+        <div class="mdl-card__title">
+		<h2 class="mdl-card__title-text">Loading...</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+		Loading...
+        </div>
+      </div>
       <div style="height:85px;">
         <h1 id="name" class="product-sans" style="padding-left:0.5cm;width: 60%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
           Loading...
@@ -96,7 +106,7 @@ function update(name, status, message) {
 }
 //----------
 // MAIN CODE
-var names = [];
+/*var names = [];
 var urls = [];
 var name = getQueryVariable("name"); // Get the name of the view
 document.getElementById('title').innerHTML = name;
@@ -124,7 +134,7 @@ $.get( "views/" + name + ".json", function( data ) { // Get the view
 }).fail(function() {
     // Show error if the view doesn't exist
     alert('The view doesn\'t exist. 😞\nAre you sure it has the right name and has not got the .json extension in the URL?');
-});
+});*/
 	   
     </script>
   </body>
