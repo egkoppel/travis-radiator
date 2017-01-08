@@ -97,19 +97,21 @@ function update(name, status, message) {
     icon = "priority_high"; // Exclamation mark
   }
   // Add to HTML body
-  document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + `<div style="height:85px;background-color:` + color + `;overflow: auto;">
-                                                         <h1 class="product-sans" style="padding-left:0.5cm;position: relative;top: 50%;transform: translateY(-50%); width: 60%; height:100%; float:left; font-family:product-sans;-moz-font-feature-settings: 'liga=1';-ms-font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-o-font-feature-settings: 'liga';font-feature-settings: 'liga';">
-                                                           ` + name + `  <i class="material-icons">` + icon + `</i>
-                                                         </h1>
-
-                                                         <h3 class="product-sans" style="position: relative;top: 50%;transform: translateY(-50%); width: 35%; height:100%; float:right; font-family:product-sans;">
-                                                           ` + message + `
-                                                         </h3>
-                                                       </div>`;
+  document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + `<div class="mdl-card mdl-shadow--3dp" style="width:100%;margin-bottom:0.5cm;">
+        <div class="mdl-card__title">
+		<h2 class="mdl-card__title-text">` + name + `</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+	  ` + icon + `
+        </div>
+	<div class="mdl-card__supporting-text">
+	  ` + message + `
+        </div>
+      </div>`;
 }
 //----------
 // MAIN CODE
-/*var names = [];
+var names = [];
 var urls = [];
 var name = getQueryVariable("name"); // Get the name of the view
 document.getElementById('title').innerHTML = name;
@@ -137,7 +139,7 @@ $.get( "views/" + name + ".json", function( data ) { // Get the view
 }).fail(function() {
     // Show error if the view doesn't exist
     alert('The view doesn\'t exist. 😞\nAre you sure it has the right name and has not got the .json extension in the URL?');
-});*/
+});
 	   
     </script>
   </body>
