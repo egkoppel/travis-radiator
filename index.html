@@ -59,7 +59,7 @@ function getData(i) {
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
       var message = data[0]['message'];
       var user = message.substr(0,message.indexOf(':'));
-      message = message.substr(str.indexOf(':')+1);
+      message = message.substr(message.indexOf(':')+1);
       update(names[i], status, message); // Add to screen
     });
   }).fail(function() { // If the repository doesn't exist
