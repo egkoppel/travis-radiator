@@ -144,9 +144,10 @@ function getData(i) {
     // Get last commit message
     $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
       var message = data[0]['message'];
-      var user = message.substr(0,message.indexOf(':'));
+      var users = message.substr(0,message.indexOf(':'));
+          users = users.split("/");
       message = message.substr(message.indexOf(':')+1);
-      update(names[i], status, message, user); // Add to screen
+      update(names[i], status, message, users); // Add to screen
     });
   }).fail(function() { // If the repository doesn't exist
     update(names[i], 3, "Repository does not exist, or is not set up with Travis 😞"); // Add to screen with error message
@@ -154,7 +155,7 @@ function getData(i) {
 }
 	   
 // Add the row to the screen
-function update(name, status, message, user) {
+function update(name, status, message, users) {
   var color = "";
   var icon = "";
   var statusText = "";
@@ -178,6 +179,10 @@ function update(name, status, message, user) {
     color = "grey"; // Grey
     icon = "priority_high"; // Exclamation mark
     statusText = "Error";
+  }
+  var images = ``;
+  for (index = 0; index < users.length; ++index) {
+      console.log(users[index]);
   }
   // Add to HTML body
   document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + `<div class="mdl-card mdl-shadow--4dp" style="width:100%;">
