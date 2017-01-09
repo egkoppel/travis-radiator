@@ -146,27 +146,25 @@ function getData(i) {
 function update(name, status, message, users) {
   var color = "";
   var icon = "";
-  var statusText = "";
+  var iconColor = "white";
   if (status == 0) {
     // Build OK
     color = "green"; // Green
     icon = "done"; // Tick
-    statusText = "OK";
+    iconColor = "black";
   } else if (status == 1) {
     // Problem with build
     color = "red"; // Red
     icon = "bug_report"; // Bug
-    statusText = "There is a bug";
   } else if (status == 2) {
     // Build in progress
     color = "blue"; // Blue
     icon = "build"; // Spanner
-    statusText = "Building";
+    iconColor = "black";
   } else {
     // Not existing
     color = "grey"; // Grey
     icon = "priority_high"; // Exclamation mark
-    statusText = "Error";
   }
   var shadows = ["mdl-shadow--4dp", "mdl-shadow--4dp", "mdl-shadow--4dp", "mdl-shadow--4dp", "mdl-shadow--4dp"];
   var images = ``;
@@ -199,7 +197,7 @@ function update(name, status, message, users) {
   ` + message + `
   </div>
   <div class="mdl-card__menu">
-  <i class="material-icons">` + icon + `</i>
+  <i class="material-icons" style="color:` + iconColor + `;">` + icon + `</i>
   </div>
   </div>
 `;
