@@ -92,7 +92,6 @@
    </div>
     
     <script>
-        window.location.reload(true);
         $(function() {
           var div = $('.mdl-cell');
           var width = div.width();
@@ -185,7 +184,7 @@ function update(name, status, message, users) {
     statusText = "Error";
   }
   var images = ``;
-  for (index = 0; index < 12; ++index) {
+  for (index = 0; index < 11; ++index) {
       if ( users[index] !== undefined ) {
           // index doesn't point to an undefined item.]
           console.log(users[index]);
