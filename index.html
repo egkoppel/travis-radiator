@@ -211,6 +211,7 @@ function update(name, status, message, users) {
 var names = [];
 var urls = [];
 var name = getQueryVariable("name"); // Get the name of the view
+document.getElementById('title').innerHTML = name;
 $.get( "views/" + name + ".json", function( data ) { // Get the view
   // Clear the screen
   document.getElementById('container').innerHTML = "";
