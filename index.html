@@ -117,8 +117,6 @@ function getData(i) {
       var message = data[0]['message'];
       var users = message.substr(0,message.indexOf(':'));
           users = users.split("/");
-          console.log(users);
-          console.log(users.length);
       message = message.substr(message.indexOf(':')+1);
       update(names[i], status, message, users); // Add to screen
     });
@@ -151,7 +149,6 @@ function update(name, status, message, users) {
     icon = "priority_high"; // Exclamation mark
     statusText = "Error";
   }
-  console.log(users.length);
   var images = ``;
   if (users.length > 5) {
       users[4] = "more";
@@ -161,8 +158,7 @@ function update(name, status, message, users) {
   }
   for (index = 0; index < 5; ++index) {
       if ( users[index] !== undefined ) {
-          // index doesn't point to an undefined item.]
-          console.log(users[index]);
+          // index doesn't point to an undefined item.
           images = images + `<div class="mdl-cell mdl-cell--2-col"><img class="img-circle" src="pictures/` + users[index] + `.png" width="100%" border="0"
           alt="" style="padding:10px;">
           </div>`
