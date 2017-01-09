@@ -30,27 +30,27 @@
       </style>
     <h1 id="title" class="product-sans" style="color:white;text-align:center;font-variant: small-caps;">Radiator</h1>
     <div id="container" class="mdl-grid">
-        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col" style="width:100%;">
+        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
             <div class="mdl-card__media mdl-card__media_grey">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--1-col">
-                        <img src="pictures/blank.png" height="100%" border="0"
-                            alt="" style="padding:10px;">
-                    </div>
-                    <div class="mdl-cell mdl-cell--1-col">
-                        <img src="pictures/blank.png" height="100%" border="0"
+                    <div class="mdl-cell mdl-cell--2-col photo">
+                        <img src="pictures/blank.png" width="100%" border="0"
                             alt="" style="padding:10px;">
                             </div>
-                    <div class="mdl-cell mdl-cell--1-col">
-                        <img src="pictures/blank.png" height="100%" border="0"
+                    <div class="mdl-cell mdl-cell--2-col photo">
+                        <img src="pictures/blank.png" width="100%" border="0"
                             alt="" style="padding:10px;">
                             </div>
-                    <div class="mdl-cell mdl-cell--1-col">
-                        <img src="pictures/blank.png" height="100%" border="0"
+                    <div class="mdl-cell mdl-cell--2-col photo">
+                        <img src="pictures/blank.png" width="100%" border="0"
                             alt="" style="padding:10px;">
                             </div>
-                    <div class="mdl-cell mdl-cell--1-col">
-                        <img src="pictures/blank.png" height="100%" border="0"
+                    <div class="mdl-cell mdl-cell--2-col photo">
+                        <img src="pictures/blank.png" width="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--2-col photo">
+                        <img src="pictures/blank.png" width="100%" border="0"
                             alt="" style="padding:10px;">
                             </div>
                     
@@ -67,15 +67,6 @@
             </div>
         </div>
    </div>
-    
-    <script>
-        $(function() {
-          var div = $('.mdl-cell');
-          var width = div.width();
-          
-          div.css('height', width);
-          });
-        </script>
    <script>
 	
 	   function imageExists(image_url){
@@ -161,7 +152,10 @@ function update(name, status, message, users) {
     statusText = "Error";
   }
   var images = ``;
-  for (index = 0; index < 11; ++index) {
+  if (users.length > 1) {
+      users[1] = "more";
+  }
+  for (index = 0; index < 5; ++index) {
       if ( users[index] !== undefined ) {
           // index doesn't point to an undefined item.]
           console.log(users[index]);
@@ -188,12 +182,6 @@ function update(name, status, message, users) {
   </div>
   </div>
 `;
-	$(function() {
-          var div = $('.mdl-cell');
-          var width = div.width();
-          
-          div.css('height', width);
-          });
 }
 //----------
 // MAIN CODE
