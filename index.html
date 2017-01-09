@@ -151,6 +151,7 @@ function update(name, status, message, users) {
     icon = "priority_high"; // Exclamation mark
     statusText = "Error";
   }
+  console.log(users.length);
   var images = ``;
   if (users.length > 5) {
       users[4] = "more";
