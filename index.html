@@ -240,6 +240,12 @@ function update(name, status, message, user) {
   </div>
   </div>
 `;
+	$(function() {
+          var div = $('.mdl-cell');
+          var width = div.width();
+          
+          div.css('height', width);
+          });
 }
 //----------
 // MAIN CODE
