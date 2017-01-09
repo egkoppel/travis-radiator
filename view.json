@@ -1,11 +1,8 @@
 {
     "View 1": {
-        "Sound Recorder": "EZ-Code-Developer/sound-recorder",
-        "Old radiator": "egkoppel/radiator",
-        "Test": "egkoppel/test.github.io"
+        "Sound Recorder": "EZ-Code-Developer/sound-recorder"
     },
     "View 2": {
-        "Sound Recorder": "EZ-Code-Developer/sound-recorder",
         "Old radiator": "egkoppel/radiator",
         "Test": "egkoppel/test.github.io"
     }
