@@ -168,19 +168,21 @@ function update(name, status, message, users) {
     icon = "priority_high"; // Exclamation mark
     statusText = "Error";
   }
+  var shadows = ["mdl-shadow--4dp", "mdl-shadow--4dp", "mdl-shadow--4dp", "mdl-shadow--4dp", "mdl-shadow--4dp"];
   var images = ``;
   if (users.length > 5) {
       users[4] = "more";
   }
   if (users[0] == "") {
       users[0] = "none";
+      shadows[0] = "";
   }
   for (index = 0; index < 5; ++index) {
       if ( users[index] !== undefined ) {
           // index doesn't point to an undefined item.
-          images = images + `<div class="mdl-cell mdl-cell--2-col"><img class="img-circle" src="pictures/` + users[index] + `.png" width="100%" border="0"
-          alt="" style="padding:10px;" class="mdl-button mdl-js-button mdl-button--fab">
-          </div>`
+          images = images + `<div class="mdl-cell mdl-cell--2-col"><img class="img-circle ` + shadows[index] + `" src="pictures/` + users[index] + `.png" width="100%" border="0"
+          alt="">
+          </div>`;
       }
   }
   // Add to HTML body
@@ -208,7 +210,7 @@ var names = [];
 var urls = [];
 var name = getQueryVariable("name"); // Get the name of the view
 document.getElementById('title').innerHTML = name;
-$.get( "views/" + name + ".json", function( data ) { // Get the view
+$.get( "https://egkoppel.github.io/travis-radiator/views/" + name + ".json", function( data ) { // Get the view
   // Clear the screen
   document.getElementById('container').innerHTML = "";
   var i = 0;
@@ -221,14 +223,14 @@ $.get( "views/" + name + ".json", function( data ) { // Get the view
     i++;
   }
   // Refresh every 10 seconds
-  setInterval(function() {
+  /*setInterval(function() {
     // Clear the screen
     document.getElementById('container').innerHTML = "";
     // Get the data
     for (i = 0; i < names.length; i++) {
       getData(i);
     }
-  }, 10000);
+  }, 10000);*/
 }).fail(function() {
     // Show error if the view doesn't exist
     alert('The view doesn\'t exist. 😞\nAre you sure it has the right name and has not got the .json extension in the URL?');
