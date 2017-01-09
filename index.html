@@ -185,7 +185,7 @@ function update(name, status, message, users) {
       if ( users[index] !== undefined ) {
           // index doesn't point to an undefined item.]
           console.log(users[index]);
-          images = images + `<img src="pictures/` + users[index] + `.png" height="100%" border="0"
+          images = images + `<div class="mdl-cell mdl-cell--1-col"><img src="pictures/` + users[index] + `.png" height="100%" border="0"
           alt="" style="padding:10px;">
           </div>`
       }
@@ -194,7 +194,7 @@ function update(name, status, message, users) {
   document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + `<div class="mdl-card mdl-shadow--4dp" style="width:100%;">
   <div class="mdl-card__media mdl-card__media_` + color + `">
   <div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--1-col">` + images + `
+  ` + images + `
   </div>
   </div>
   <div class="mdl-card__title">
