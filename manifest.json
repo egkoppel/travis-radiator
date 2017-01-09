@@ -1,0 +1,15 @@
+{
+    "short_name": "Radiator",
+    "name": "Travis Radiator",
+    "icons": [
+              {
+              "src":"icon.png",
+              "sizes": "512x512",
+              "type": "image/png"
+              }
+              ],
+    "start_url": "/",
+    "background_color": "#2196F3",
+    "theme_color": "#1976D2",
+    "display": "standalone"
+}
