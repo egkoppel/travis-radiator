@@ -28,8 +28,21 @@
           border-radius: 50%;
       }
       </style>
-    <h1 id="title" class="product-sans" style="color:white;text-align:center;font-variant: small-caps;">Radiator</h1>
-    <div id="container" class="mdl-grid">
+      <div class="mdl-layout mdl-js-layout">
+      <header class="mdl-layout__header mdl-layout__header--scroll">
+          <div class="mdl-layout__header-row">
+              <!-- Title -->
+              <span class="mdl-layout-title" id="title">Title</span>
+              <!-- Add spacer, to align navigation to the right -->
+              <div class="mdl-layout-spacer"></div>
+              <!-- Navigation -->
+              <nav class="mdl-navigation">
+              </nav>
+          </div>
+      </header>
+      <main class="mdl-layout__content" style="width:100%">
+          <div class="page-content" style="width:100%"><!-- Your content goes here -->
+    <div id="container" class="mdl-grid" style="width:100%">
         <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
             <div class="mdl-card__media mdl-card__media_grey">
                 <div class="mdl-grid">
@@ -67,6 +80,9 @@
             </div>
         </div>
    </div>
+          </div>
+      </main>
+      </div>
    <script>
 	
 	   function imageExists(image_url){
