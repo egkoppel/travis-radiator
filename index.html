@@ -117,11 +117,11 @@ function getData(i) {
       var message = data[0]['message'];
       var users = message.substr(0,message.indexOf(':'));
           users = users.split("/");
+          console.log(users);
+          console.log(users.length);
       message = message.substr(message.indexOf(':')+1);
       update(names[i], status, message, users); // Add to screen
     });
-  }).fail(function() { // If the repository doesn't exist
-    update(names[i], 3, "Repository does not exist, or is not set up with Travis 😞"); // Add to screen with error message
   });
 }
 	   
