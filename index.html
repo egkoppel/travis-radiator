@@ -27,15 +27,57 @@
       </style>
     <h1 id="title" class="product-sans" style="color:white;text-align:center;font-variant: small-caps;">Radiator</h1>
     <div id="container" style="align:center;">
-        <div class="mdl-card mdl-shadow--4dp">
-            <div class="mdl-card__media mdl-card__media_grey"><img height="157" border="0"
-                alt="" style="padding:10px;">
+        <div class="mdl-card mdl-shadow--4dp" style="width:100%;">
+            <div class="mdl-card__media mdl-card__media_grey">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                    </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="pictures/blank.png" height="100%" border="0"
+                            alt="" style="padding:10px;">
+                            </div>
+                </div>
                 </div>
             <div class="mdl-card__title">
                 <h3 class="mdl-card__title-text">Loading...</h3>
-            </div>
-            <div class="mdl-card__title">
-                <h5 class="mdl-card__subtitle-text">Status</h5>
             </div>
             <div class="mdl-card__supporting-text">
                 Message
@@ -45,6 +87,15 @@
             </div>
         </div>
    </div>
+    
+    <script>
+        $(function() {
+          var div = $('.mdl-cell');
+          var width = div.width();
+          
+          div.css('height', width);
+          });
+        </script>
    <script>
 	
 	   function imageExists(image_url){
@@ -129,15 +180,57 @@ function update(name, status, message, user) {
     statusText = "Error";
   }
   // Add to HTML body
-  document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + `<div class="mdl-card mdl-shadow--4dp">
-  <div class="mdl-card__media mdl-card__media_` + color + `"><img src="pictures/` + user + `.png" height="157" border="0"
+  document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + `<div class="mdl-card mdl-shadow--4dp" style="width:100%;">
+  <div class="mdl-card__media mdl-card__media_grey">
+  <div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
   alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  <img src="pictures/blank.png" height="100%" border="0"
+  alt="" style="padding:10px;">
+  </div>
+  </div>
   </div>
   <div class="mdl-card__title">
   <h3 class="mdl-card__title-text">` + name + `</h3>
-  </div>
-  <div class="mdl-card__title">
-  <h5 class="mdl-card__subtitle-text">` + statusText + `</h5>
   </div>
   <div class="mdl-card__supporting-text">
   ` + message + `
@@ -145,7 +238,8 @@ function update(name, status, message, user) {
   <div class="mdl-card__menu">
   <i class="material-icons">` + icon + `</i>
   </div>
-  </div>`;
+  </div>
+`;
 }
 //----------
 // MAIN CODE
@@ -155,7 +249,7 @@ var name = getQueryVariable("name"); // Get the name of the view
 document.getElementById('title').innerHTML = name;
 $.get( "views/" + name + ".json", function( data ) { // Get the view
   // Clear the screen
-  document.getElementById('container').innerHTML = ""; 
+  document.getElementById('container').innerHTML = "";
   var i = 0;
   for (let [key, value] of entries(data)) {
     // Store the view names and URLs
@@ -178,7 +272,7 @@ $.get( "views/" + name + ".json", function( data ) { // Get the view
     // Show error if the view doesn't exist
     alert('The view doesn\'t exist. 😞\nAre you sure it has the right name and has not got the .json extension in the URL?');
 });
-	   
+
     </script>
   </body>
 </html>
