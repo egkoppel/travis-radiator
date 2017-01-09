@@ -153,11 +153,8 @@ function update(name, status, message, users) {
   if (users.length > 5) {
       users[4] = "more";
   }
-  if (users[0] == "") {
-      users[0] = "none";
-  }
   for (index = 0; index < 5; ++index) {
-      if ( users[index] !== undefined ) {
+      if ( users[index] !== undefined || users[index] != "") {
           // index doesn't point to an undefined item.
           images = images + `<div class="mdl-cell mdl-cell--2-col"><img class="img-circle" src="pictures/` + users[index] + `.png" width="100%" border="0"
           alt="" style="padding:10px;">
