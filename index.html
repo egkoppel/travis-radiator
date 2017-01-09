@@ -185,7 +185,7 @@ function update(name, status, message, users) {
       if ( users[index] !== undefined ) {
           // index doesn't point to an undefined item.]
           console.log(users[index]);
-          images += `<img src="pictures/` + users[index].png + `" height="100%" border="0"
+          images = images + `<img src="pictures/` + users[index] + `.png" height="100%" border="0"
           alt="" style="padding:10px;">
           </div>`
       }
