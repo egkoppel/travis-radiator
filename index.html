@@ -223,14 +223,14 @@ $.get( "https://egkoppel.github.io/travis-radiator/views/" + name + ".json", fun
     i++;
   }
   // Refresh every 10 seconds
-  /*setInterval(function() {
+  setInterval(function() {
     // Clear the screen
     document.getElementById('container').innerHTML = "";
     // Get the data
     for (i = 0; i < names.length; i++) {
       getData(i);
     }
-  }, 10000);*/
+  }, 10000);
 }).fail(function() {
     // Show error if the view doesn't exist
     alert('The view doesn\'t exist. 😞\nAre you sure it has the right name and has not got the .json extension in the URL?');
