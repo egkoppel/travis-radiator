@@ -152,8 +152,8 @@ function update(name, status, message, users) {
     statusText = "Error";
   }
   var images = ``;
-  if (users.length > 1) {
-      users[1] = "more";
+  if (users.length > 5) {
+      users[4] = "more";
   }
   for (index = 0; index < 5; ++index) {
       if ( users[index] !== undefined ) {
