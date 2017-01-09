@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -10,34 +11,18 @@
   </head>
   <body style="background-color:#2196F3;">
       <style>
-          .mdl-card {
-              margin: 5px;
-              display: inline-block;
-          }
-    .mdl-card__media_grey {
-          background-color:#BDBDBD;
-      }
-      .mdl-card__media_blue {
-          background-color:#00B0FF;
-      }
-      .mdl-card__media_green {
-          background-color:#00E676;
-      }
-      .mdl-card__media_red {
-          background-color:#FF1744;
-      }
-      .img-circle {
-          border-radius: 50%;
-      }
 	      .mdl-layout__header-row {
 		background-color:#1976D2;      
 	      }
+      .page-content {
+          margin:auto;
+      }
       </style>
       <div class="mdl-layout mdl-js-layout">
       <header class="mdl-layout__header mdl-layout__header--scroll">
           <div class="mdl-layout__header-row">
               <!-- Title -->
-              <span class="mdl-layout-title" id="title">Title</span>
+              <span class="mdl-layout-title" id="title">View selection</span>
               <!-- Add spacer, to align navigation to the right -->
               <div class="mdl-layout-spacer"></div>
               <!-- Navigation -->
@@ -46,196 +31,24 @@
           </div>
       </header>
       <main class="mdl-layout__content" style="width:100%">
-          <div class="page-content" style="width:100%"><!-- Your content goes here -->
-    <div id="container" class="mdl-grid" style="width:100%">
-        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
-            <div class="mdl-card__media mdl-card__media_grey">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--2-col photo">
-                        <img src="pictures/none.png" width="100%" border="0"
-                            alt="" style="padding:10px;" class="mdl-button mdl-js-button mdl-button--fab">
-                            </div>
-                    <div class="mdl-cell mdl-cell--2-col photo">
-                        <img src="pictures/none.png" width="100%" border="0"
-                            alt="" style="padding:10px;" class="mdl-button mdl-js-button mdl-button--fab">
-                            </div>
-                    <div class="mdl-cell mdl-cell--2-col photo">
-                        <img src="pictures/none.png" width="100%" border="0"
-                            alt="" style="padding:10px;" class="mdl-button mdl-js-button mdl-button--fab">
-                            </div>
-                    <div class="mdl-cell mdl-cell--2-col photo">
-                        <img src="pictures/none.png" width="100%" border="0"
-                            alt="" style="padding:10px;" class="mdl-button mdl-js-button mdl-button--fab">
-                            </div>
-                    <div class="mdl-cell mdl-cell--2-col photo">
-                        <img src="pictures/none.png" width="100%" border="0"
-                            alt="" style="padding:10px;" class="mdl-button mdl-js-button mdl-button--fab">
-                            </div>
-                    
-                </div>
-                </div>
-            <div class="mdl-card__title">
-                <h3 class="mdl-card__title-text">Loading...</h3>
-            </div>
-            <div class="mdl-card__supporting-text">
-                Message
-            </div>
-            <div class="mdl-card__menu">
-                    <i class="material-icons">refresh</i>
-            </div>
-        </div>
-   </div>
+          <div class="page-content">
+              <!-- Textfield with Floating Label -->
+              <form action="#">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="view">
+                          <label class="mdl-textfield__label" for="view">Name of view</label>
+                          </div>
+              </form>
+              <!-- Colored raised button -->
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="button">
+                  Go
+              </button>
+
           </div>
       </main>
       </div>
-   <script>
-	
-	   function imageExists(image_url){
-
-    var http = new XMLHttpRequest();
-
-    http.open('HEAD', image_url, false);
-    http.send();
-
-    return http.status != 404;
-
-}
-	   
-// Get a variable from GET
-function getQueryVariable(variable) {
-  var query = window.location.search.substring(1);
-  var vars = query.split("&");
-  for (var i=0;i<vars.length;i++) {
-    var pair = vars[i].split("=");
-    if (pair[0] == variable) {
-      var returnValue = pair[1].replace(/%20/g," ");
-      return returnValue;
-    }
-  } 
-  // Show error if they haven't put the view name in the URL
-  alert('No view specified.\nMake sure you have added ?name=name-of-view on the end of the URL.');
-}
-	   
-// foreach on dictionary
-function* entries(obj) {
-  for (let key of Object.keys(obj)) {
-    yield [key, obj[key]];
-  }  
-}
-
-// Get the data from Travis (build status and commit message)
-function getData(i) {
-  var status = 3;
-  // Get build status
-  $.get( "https://api.travis-ci.org/repos/" + urls[i] + ".json", function( data ) {
-    if (data["last_build_status"] != null) {
-      status = data["last_build_status"]; // 0 = OK | 1 = Problem | Null = Building
-    } else {
-      status = 2;
-    }
-    // Get last commit message
-    $.get( "https://api.travis-ci.org/repos/" + urls[i] + "/builds", function( data ) {
-      var message = data[0]['message'];
-      var users = message.substr(0,message.indexOf(':'));
-          users = users.split("/");
-      message = message.substr(message.indexOf(':')+1);
-      update(names[i], status, message, users); // Add to screen
-    });
-  });
-}
-	   
-// Add the row to the screen
-function update(name, status, message, users) {
-  var color = "";
-  var icon = "";
-  var iconColor = "white";
-  if (status == 0) {
-    // Build OK
-    color = "green"; // Green
-    icon = "done"; // Tick
-    iconColor = "black";
-  } else if (status == 1) {
-    // Problem with build
-    color = "red"; // Red
-    icon = "bug_report"; // Bug
-  } else if (status == 2) {
-    // Build in progress
-    color = "blue"; // Blue
-    icon = "build"; // Spanner
-    iconColor = "black";
-  } else {
-    // Not existing
-    color = "grey"; // Grey
-    icon = "priority_high"; // Exclamation mark
-  }
-  var shadows = ["mdl-shadow--4dp", "mdl-shadow--4dp", "mdl-shadow--4dp", "mdl-shadow--4dp", "mdl-shadow--4dp"];
-  var images = ``;
-  if (users.length > 5) {
-      users[4] = "more";
-  }
-  if (users[0] == "") {
-      users[0] = "none";
-      shadows[0] = "";
-  }
-  for (index = 0; index < 5; ++index) {
-      if ( users[index] !== undefined ) {
-          // index doesn't point to an undefined item.
-          images = images + `<div class="mdl-cell mdl-cell--2-col"><img class="img-circle ` + shadows[index] + `" src="pictures/` + users[index] + `.png" width="100%" border="0"
-          alt="">
-          </div>`;
-      }
-  }
-  // Add to HTML body
-  document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + `<div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
-  <div class="mdl-card__media mdl-card__media_` + color + `">
-  <div class="mdl-grid">
-  ` + images + `
-  </div>
-  </div>
-  <div class="mdl-card__title">
-  <h3 class="mdl-card__title-text">` + name + `</h3>
-  </div>
-  <div class="mdl-card__supporting-text">
-  ` + message + `
-  </div>
-  <div class="mdl-card__menu">
-  <i class="material-icons" style="color:` + iconColor + `;">` + icon + `</i>
-  </div>
-  </div>
-`;
-}
-//----------
-// MAIN CODE
-var names = [];
-var urls = [];
-var name = getQueryVariable("name"); // Get the name of the view
-document.getElementById('title').innerHTML = name;
-$.get( "https://egkoppel.github.io/travis-radiator/views/" + name + ".json", function( data ) { // Get the view
-  // Clear the screen
-  document.getElementById('container').innerHTML = "";
-  var i = 0;
-  for (let [key, value] of entries(data)) {
-    // Store the view names and URLs
-    names[i] = key;
-    urls[i] = value;
-    // Get the data
-    getData(i);
-    i++;
-  }
-  // Refresh every 10 seconds
-  setInterval(function() {
-    // Clear the screen
-    document.getElementById('container').innerHTML = "";
-    // Get the data
-    for (i = 0; i < names.length; i++) {
-      getData(i);
-    }
-  }, 10000);
-}).fail(function() {
-    // Show error if the view doesn't exist
-    alert('The view doesn\'t exist. 😞\nAre you sure it has the right name and has not got the .json extension in the URL?');
-});
-
-    </script>
+      <script>
+          document.getElementById('button').addEventListener("click", function(){window.location = "view.html?name=" + document.getElementById('view').value});
+          </script>
   </body>
 </html>
