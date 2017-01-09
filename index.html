@@ -155,6 +155,9 @@ function update(name, status, message, users) {
   if (users.length > 5) {
       users[4] = "more";
   }
+  if (users.length == 0) {
+      users[0] = "none";
+  }
   for (index = 0; index < 5; ++index) {
       if ( users[index] !== undefined ) {
           // index doesn't point to an undefined item.]
