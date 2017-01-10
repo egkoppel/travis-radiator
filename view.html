@@ -9,10 +9,13 @@
         <!-- Windows Phone -->
         <meta name="msapplication-navbutton-color" content="#FFC107">
             <!-- iOS Safari -->
-            <meta name="apple-mobile-web-app-status-bar-style" content="#FFC107">
-        <link rel="manifest" href="manifest.json">
-	  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-	  <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+                <link rel="manifest" href="manifest.json">
+                    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+                        <meta name="apple-mobile-web-app-capable" content="yes">
+                            <link rel="icon" href="icon.png" type="image/png">
+                                <meta name="apple-mobile-web-app-title" content="Radiator">
+                                    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   </head>
   <body style="background-color:#FFE082;">
       <style>
@@ -54,9 +57,10 @@
       </div>
       <main class="mdl-layout__content" style="width:100%">
           <div class="page-content" style="width:100%"><!-- Your content goes here -->
+              <div id="spinner" class="mdl-spinner mdl-js-spinner is-active"></div>
+          </div>
     <div id="container" class="mdl-grid" style="width:100%">
-        <div id="spinner" class="mdl-spinner mdl-js-spinner is-active"></div>
-   </div>
+        
           </div>
       </main>
       </div>
@@ -72,6 +76,8 @@
     return http.status != 404;
 
 }
+   
+   var spinner = document.getElementById('spinner');
 	   
 // Get a variable from GET
 function getQueryVariable(variable) {
@@ -118,6 +124,7 @@ function getData(i) {
 	   
 // Add the row to the screen
 function update(name, status, message, users) {
+    spinner.className = "mdl-spinner mdl-js-spinner";
   var color = "";
   var icon = "";
   var iconColor = "white";
@@ -198,6 +205,7 @@ $.get( "https://egkoppel.github.io/travis-radiator/views/" + name + ".json", fun
   setInterval(function() {
     // Clear the screen
     document.getElementById('container').innerHTML = "";
+    spinner.className = "mdl-spinner mdl-js-spinner is-active";
     // Get the data
     for (i = 0; i < names.length; i++) {
       getData(i);
