@@ -17,9 +17,17 @@
 	      .mdl-layout__header-row {
 		background-color:#1976D2;      
 	      }
-      .page-content {
-          margin:auto;
-      }
+      .content {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+  background: red;
+}
+	      
       </style>
       <div class="mdl-layout mdl-js-layout">
       <header class="mdl-layout__header mdl-layout__header--scroll">
@@ -34,9 +42,9 @@
           </div>
       </header>
       <main class="mdl-layout__content" style="width:100%">
-          <div class="page-content mdl-grid">
+          <div class="page-content">
               <!-- Textfield with Floating Label -->
-		  <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-cell--5-offset-desktop mdl-cell--3-offset-tablet mdl-cell--0-offset-phone">
+		  <div class="content">
               <form action="#">
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                       <input class="mdl-textfield__input" type="text" id="view">
