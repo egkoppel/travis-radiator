@@ -4,24 +4,21 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://egkoppel.github.io/product-sans/google-fonts.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.orange-blue.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-orange.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <meta name="theme-color" content="#00796B">
+    <meta name="theme-color" content="#607D8B">
         <link rel="manifest" href="manifest.json">
 	  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 	  <meta name="apple-mobile-web-app-capable" content="yes">
 	  <link rel="icon" href="icon.png" type="image/png">
 	  <meta name="apple-mobile-web-app-title" content="Radiator">
           <!-- Windows Phone -->
-          <meta name="msapplication-navbutton-color" content="#FFC107">
+          <meta name="msapplication-navbutton-color" content="#607D8B">
               <!-- iOS Safari -->
-	  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	  <meta name="apple-mobile-web-app-status-bar-style" content="black">
     </head>
-  <body style="background-color:#FFE082;">
+  <body>
       <style>
-	      .mdl-layout__header-row {
-		background-color:#FFC107;      
-	      }
       .content {
   position: absolute;
   width: 300px;
@@ -34,17 +31,16 @@
 	      
       </style>
       <div class="mdl-layout mdl-js-layout">
-      <header class="mdl-layout__header mdl-layout__header--scroll">
-          <div class="mdl-layout__header-row">
-              <!-- Title -->
-              <span class="mdl-layout-title" id="title">View selection</span>
-              <!-- Add spacer, to align navigation to the right -->
-              <div class="mdl-layout-spacer"></div>
-              <!-- Navigation -->
-              <nav class="mdl-navigation">
-              </nav>
-          </div>
-      </header>
+          <header class="mdl-layout__header">
+              <div class="mdl-layout-icon"></div>
+              <div class="mdl-layout__header-row">
+                  <span class="mdl-layout__title" id="title">Select a view</span>
+                  <div class="mdl-layout-spacer"></div>
+                  <nav class="mdl-navigation">
+                      
+                  </nav>
+              </div>
+          </header>
       <main class="mdl-layout__content" style="width:100%">
           <div class="page-content">
               <!-- Textfield with Floating Label -->
@@ -56,7 +52,7 @@
                           </div>
               </form>
               <!-- Colored raised button -->
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="button">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-button--accent" id="button">
                   Go
               </button>
 		  </div>
