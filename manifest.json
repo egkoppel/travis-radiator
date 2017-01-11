@@ -8,8 +8,8 @@
               "type": "image/png"
               }
               ],
-    "start_url": "/travis-radiator",
-    "background_color": "#009688",
-    "theme_color": "#00796B",
+    "start_url": "https://egkoppel.github.io/travis-radiator",
+    "background_color": "#FFFFFF",
+    "theme_color": "#607D8B",
     "display": "standalone"
 }
